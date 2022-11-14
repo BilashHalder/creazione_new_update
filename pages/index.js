@@ -24,15 +24,15 @@ export default function MyApp() {
       {/* <SalaryNew></SalaryNew> */}
       {/* <AssoicateNew></AssoicateNew> */}
 
-      {/* <CustomerNew/> */}
+      <CustomerNew/>
 
       {/* <EmployeeNew></EmployeeNew> */}
 
       {/* <EmployeeInfoNew emp_id="1"></EmployeeInfoNew> */}
+{/* 
+      <InvesmentNew user_id="1" user_type="1"></InvesmentNew> */}
 
-      {/* <InvesmentNew user_id="1" user_type="1"></InvesmentNew> */}
-
-      <PaymentNew></PaymentNew>
+      {/* <PaymentNew></PaymentNew> */}
 
     </div>
   );
