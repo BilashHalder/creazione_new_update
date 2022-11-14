@@ -3,6 +3,7 @@ import {Button} from '@mui/material';
 import AccountNew from '../components/Add/AccountNew';
 import NomineeNew from '../components/Add/NomineeNew';
 import QualificationNew from '../components/Add/QualificationNew';
+import DesignationNew  from '../components/Add/DesignationNew'
 import KycNew from '../components/Add/KycNew';
 import SalaryNew from '../components/Add/SalaryNew';
 import AssoicateNew from '../components/Add/AssoicateNew';
@@ -22,9 +23,11 @@ export default function MyApp() {
       {/* <KycNew user_id="1" user_type="1"></KycNew> */}
       {/* <QualificationNew emp_id="1"></QualificationNew> */}
       {/* <SalaryNew></SalaryNew> */}
+
+      
       {/* <AssoicateNew></AssoicateNew> */}
 
-      <CustomerNew/>
+      {/* <CustomerNew/> */}
 
       {/* <EmployeeNew></EmployeeNew> */}
 

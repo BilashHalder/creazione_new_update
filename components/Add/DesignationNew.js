@@ -1,12 +1,18 @@
 import {React,useState} from 'react'
 import {Grid,Typography,Box,Button,Stack,TextField,Alert,Snackbar} from '@mui/material';
-
+import axios from 'axios';
+import {baseUrl} from '../../util/lib'
 
 export default function DesignationNew() {
   //Common States For All
   const [message, setMessage] = useState('This is a success alert — check it out!');
-  const [alertShow, setAlertShow] = useState(true);
+  const [alertShow, setAlertShow] = useState(false);
   const [alertColor, setaAertColor] = useState('error');
+
+
+//Form Data 
+
+const [title, setTitle] = useState('')
 
 
 //Common Functions For All
@@ -15,12 +21,41 @@ export default function DesignationNew() {
  } 
  const formHandler=(e)=>{
   e.preventDefault();
-  console.log('submit');
+  if(title.length<5){
+    setAlertShow(true);
+    setMessage('Please Enter a Valid Title!');
+    setaAertColor('error');
+  }
+  else{
+
+   let data = new FormData();
+  data.append('title',title);
+  axios({
+    method: "post",
+    url: `${baseUrl}/designation`,
+    data: data,
+    headers: { "Content-Type": "multipart/form-data" },
+  })
+    .then((response)=> {
+      setAlertShow(true);
+      setMessage("Designation Information Saved");
+      setaAertColor('success');
+      resetForm();
+    })
+    .catch((response)=> {
+      setAlertShow(true);
+      setMessage('Please Try Again Later!');
+      setaAertColor('error');
+
+    });
+
+  }
+
 
  }
 
  const resetForm=()=>{
-  console.log('reset');
+  setTitle('')
 
  }
 
@@ -32,10 +67,12 @@ export default function DesignationNew() {
      <Box component='form' onSubmit={formHandler} >
      <Grid container spacing={2} direction="row">
       <Grid item md={6} xs={12}>
-      <TextField label=" Designation Title"  type="text" required fullWidth  InputLabelProps={{ shrink: true}}  />
+      <TextField label=" Designation Title"  type="text" required fullWidth  InputLabelProps={{ shrink: true}}  value={title} onChange={(e)=>{
+        setTitle(e.target.value);
+      }}/>
       </Grid>
       <Grid item md={6} xs={12} >
-      <Stack direction="row" spacing={4} sx={{'py':'3%','px':'4%'}}>
+      <Stack direction="row" spacing={4} sx={{'py':'2%','px':'4%'}}>
       <Button variant="outlined" type={'submit'} color="success">Save</Button>
       <Button variant="outlined" color="error" onClick={resetForm}>Cancel</Button>
      </Stack>
