@@ -20,6 +20,7 @@ const [title, setTitle] = useState('')
   setAlertShow(false);
  } 
  const formHandler=(e)=>{
+
   e.preventDefault();
   if(title.length<5){
     setAlertShow(true);
@@ -27,7 +28,6 @@ const [title, setTitle] = useState('')
     setaAertColor('error');
   }
   else{
-
    let data = new FormData();
   data.append('title',title);
   axios({
@@ -37,13 +37,15 @@ const [title, setTitle] = useState('')
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then((response)=> {
+      console.log(response)
       setAlertShow(true);
       setMessage("Designation Information Saved");
       setaAertColor('success');
       resetForm();
     })
-    .catch((response)=> {
+    .catch((err)=> {
       setAlertShow(true);
+      console.log(err)
       setMessage('Please Try Again Later!');
       setaAertColor('error');
 

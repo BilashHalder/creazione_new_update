@@ -168,14 +168,14 @@ const calculate=()=>{
         
         }/>
       </Grid >
-      <Grid item md={4} xs={12} >
+      <Grid item md={6} xs={12} >
       <Stack direction="row" spacing={4} sx={{'py':'3%','px':'4%'}}>
       <Button variant="outlined" type={'submit'} color="success">Save</Button>
       <Button variant="outlined" color="error" onClick={resetForm}>Cancel</Button>
       <Button variant="outlined" color="info" onClick={calculate}>View Details</Button>
      </Stack>
       </Grid>
-      <Grid item md={4} xs={6}>
+      <Grid item md={3} xs={6}>
         <List>
           {
             basic? <><ListItem><ListItemText>Basic  ₹ {basic} </ListItemText> </ListItem> <Divider/></>:<></>
@@ -204,7 +204,7 @@ const calculate=()=>{
           </List>
 
       </Grid >
-      <Grid item md={4} xs={6}>
+      <Grid item md={3} xs={6}>
         <List>
         
            {

@@ -12,6 +12,11 @@ import EmployeeNew from '../components/Add/EmployeeNew';
 import EmployeeInfoNew from '../components/Add/EmployeeInfoNew';
 import InvesmentNew from '../components/Add/InvesmentNew';
 import PaymentNew from '../components/Add/PaymentNew';
+import AllEmployee from '../components/Tables/AllEmployee';
+import AllAssociate from '../components/Tables/AllAssociate';
+import AllCustomer from '../components/Tables/AllCustomer';
+import AllInvesment from '../components/Tables/AllInvesment';
+import AllSalary from '../components/Tables/AllSalary';
 
 export default function MyApp() {
   return (
@@ -20,7 +25,7 @@ export default function MyApp() {
       {/* <NomineeNew user_id="1" user_type="1"></NomineeNew> */}
 
       {/* <DesignationNew></DesignationNew> */}
-      {/* <KycNew user_id="1" user_type="1"></KycNew> */}
+      {/* <KycNew user_id="6" user_type="1"></KycNew> */}
       {/* <QualificationNew emp_id="1"></QualificationNew> */}
       {/* <SalaryNew></SalaryNew> */}
 
@@ -32,10 +37,17 @@ export default function MyApp() {
       {/* <EmployeeNew></EmployeeNew> */}
 
       {/* <EmployeeInfoNew emp_id="1"></EmployeeInfoNew> */}
-{/* 
-      <InvesmentNew user_id="1" user_type="1"></InvesmentNew> */}
+
+      {/* <InvesmentNew user_id="1" user_type="1"></InvesmentNew> */}
 
       {/* <PaymentNew></PaymentNew> */}
+
+
+      {/* <AllEmployee/> */}
+      {/* <AllAssociate/> */}
+      {/* <AllCustomer/> */}
+      {/* <AllInvesment/> */}
+    <AllSalary/>
 
     </div>
   );

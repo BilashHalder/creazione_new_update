@@ -1,6 +1,7 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import {Grid,Typography,Box,Button,Stack,Select,MenuItem,FormControl,InputLabel,Switch,FormControlLabel,TextField,Avatar,Divider,Alert,Snackbar,Paper,CircularProgress,Drawer} from '@mui/material';
-
+import axios from 'axios';
+import {baseUrl} from '../../util/lib'
 
 
 export default function AssoicateNew() {
@@ -9,6 +10,31 @@ export default function AssoicateNew() {
   const [message, setMessage] = useState('This is a success alert — check it out!');
   const [alertShow, setAlertShow] = useState(true);
   const [alertColor, setaAertColor] = useState('error');
+const [employees, setEmployees] = useState([]);
+useEffect(() => {
+  axios({
+    method: "get",
+    url: `${baseUrl}/employee`,
+    headers: { "Content-Type": "multipart/form-data" },
+  })
+    .then((response)=> {
+      setAlertShow(true);
+      setMessage("Cutomer Information Saved");
+      setaAertColor('success');
+      resetForm();
+    })
+    .catch((response)=> {
+      setAlertShow(true);
+      if(response.response.data.message)
+      setMessage(response.response.data.message);
+      else
+      setMessage('Please Try Again Later!');
+      setaAertColor('error');
+    });
+
+  
+}, [])
+
 
 
 //Common Functions For All
