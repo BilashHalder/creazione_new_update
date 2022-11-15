@@ -7,36 +7,40 @@ const fileName = 'salaryall'
 const exportType =  exportFromJSON.types.csv;
 
 import DataTable from 'react-data-table-component';
-import EditSalary from '../Edit/EditSalary';
-import ViewSalary from '../View/ViewSalary';
+import EditQualification from '../Edit/EditQualification';
+import ViewQualification from '../View/ViewQualification';
 
 
 
-export default function AllSalary() {
+export default function AllQualification() {
     
     const columns = [
        
         {
-            name: 'Basic',
-            selector: row => row.basic,
+            name: 'Id',
+            selector: row => row.id,
             sortable: true,
         },
         {
-            name: 'Hra',
-            selector: row => row.hra,
+            name: 'Degree Name',
+            selector: row => row.degree_name,
             sortable: true,
         },
         {
-          name: 'Conveyance',
-          selector: row => row.conveyance,
+          name: 'Year',
+          selector: row => row.year_of_pass,
           sortable: true,
       },
       {
-        name: 'Total',
-        selector: row =>(parseFloat( row.hra)+parseFloat( row.basic)+parseFloat( row.conveyance)+parseFloat( row.medical)+parseFloat( row.special)+parseFloat( row.pf)+parseFloat( row.insurance)),
+        name: 'Degree From',
+        selector: row => row.degree_from,
         sortable: true,
-        },
-        
+    }, {
+        name: 'Employee Id',
+        selector: row => row.employee_id,
+        sortable: true,
+    },
+     
         {
             name: 'Action',
             selector: row =><ButtonGroup variant="text">
@@ -76,7 +80,7 @@ export default function AllSalary() {
     useEffect(() => {
         axios({
             method: "get",
-            url: `${baseUrl}/salary`,
+            url: `${baseUrl}/qualification`,
             headers: { "Content-Type": "multipart/form-data" },
           })
             .then((response)=> {
@@ -102,17 +106,17 @@ export default function AllSalary() {
             responsive
             fixedHeader={true}
             fixedHeaderScrollHeight={'400px'}
-            title="All Salary"
+            title="All Qualification"
             highlightOnHover={true}
 
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditSalary/> 
+               <EditQualification/> 
          </Drawer>
 
          <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <ViewSalary/>
+            <ViewQualification/>
          </Drawer>
 
     </Grid>

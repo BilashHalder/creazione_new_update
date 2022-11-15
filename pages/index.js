@@ -17,6 +17,9 @@ import AllAssociate from '../components/Tables/AllAssociate';
 import AllCustomer from '../components/Tables/AllCustomer';
 import AllInvesment from '../components/Tables/AllInvesment';
 import AllSalary from '../components/Tables/AllSalary';
+import AllDesignation from '../components/Tables/AllDesignation';
+import AllQualification from '../components/Tables/AllQualification';
+import AllNominee from '../components/Tables/AllNominee';
 
 export default function MyApp() {
   return (
@@ -47,7 +50,10 @@ export default function MyApp() {
       {/* <AllAssociate/> */}
       {/* <AllCustomer/> */}
       {/* <AllInvesment/> */}
-    <AllSalary/>
+     {/* <AllSalary/> */}
+     {/* <AllDesignation/> */}
+     {/* <AllQualification/> */}
+      <AllNominee/>
 
     </div>
   );

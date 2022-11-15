@@ -3,44 +3,46 @@ import {Grid,ButtonGroup,Button,Avatar,Drawer} from '@mui/material';
 import axios from 'axios';
 import {baseUrl,imageUrl} from '../../util/lib';
 import exportFromJSON from 'export-from-json';
-const fileName = 'salaryall'
+const fileName = 'nomineelist'
 const exportType =  exportFromJSON.types.csv;
 
 import DataTable from 'react-data-table-component';
-import EditSalary from '../Edit/EditSalary';
-import ViewSalary from '../View/ViewSalary';
+import EditNominee from '../Edit/EditNominee';
 
 
 
-export default function AllSalary() {
+export default function AllNominee() {
     
     const columns = [
        
         {
-            name: 'Basic',
-            selector: row => row.basic,
+            name: 'Id',
+            selector: row => row.id,
             sortable: true,
         },
         {
-            name: 'Hra',
-            selector: row => row.hra,
+            name: 'Name',
+            selector: row => row.name,
             sortable: true,
         },
         {
-          name: 'Conveyance',
-          selector: row => row.conveyance,
+          name: 'Date of Birth',
+          selector: row => row.dob.slice(0,10),
           sortable: true,
       },
       {
-        name: 'Total',
-        selector: row =>(parseFloat( row.hra)+parseFloat( row.basic)+parseFloat( row.conveyance)+parseFloat( row.medical)+parseFloat( row.special)+parseFloat( row.pf)+parseFloat( row.insurance)),
+        name: 'User ID',
+        selector: row => row.user_id,
         sortable: true,
-        },
-        
+    }, {
+        name: 'User Type',
+        selector: row => row.user_type==1?"Customer":"Associate",
+        sortable: true,
+    },
+     
         {
             name: 'Action',
             selector: row =><ButtonGroup variant="text">
-            <Button  color="info" onClick={()=>{viewData(row)}}>View</Button>
             <Button color="warning" onClick={()=>{editData(row)}}>Edit</Button>
           </ButtonGroup>
         },
@@ -52,31 +54,28 @@ export default function AllSalary() {
         setEditDrawer(false);
     }
 
-    const closeEdit=()=>{
-        setViewDrawer(false);
-    }
+  
 
 
     const editData=(single)=>{
+      setEditdata(single.id);
         setEditDrawer(true);
+        setEditdata(single.id);
     }
 
-    const viewData=(single)=>{
-        setViewDrawer(true);
-    }
+   
 
 
     const [data, setData] = useState([]);
 
     const [editDrawer, setEditDrawer] = useState(false);
-    const [viewDrawer, setViewDrawer] = useState(false);
-
-
+    const [editdata, setEditdata] = useState(null);
+    
 
     useEffect(() => {
         axios({
             method: "get",
-            url: `${baseUrl}/salary`,
+            url: `${baseUrl}/nominee`,
             headers: { "Content-Type": "multipart/form-data" },
           })
             .then((response)=> {
@@ -102,18 +101,16 @@ export default function AllSalary() {
             responsive
             fixedHeader={true}
             fixedHeaderScrollHeight={'400px'}
-            title="All Salary"
+            title="All nominee"
             highlightOnHover={true}
 
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditSalary/> 
+               <EditNominee/> 
          </Drawer>
 
-         <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <ViewSalary/>
-         </Drawer>
+    
 
     </Grid>
   )

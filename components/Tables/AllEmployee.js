@@ -8,6 +8,7 @@ const exportType =  exportFromJSON.types.csv;
 
 import DataTable from 'react-data-table-component';
 import EditEmployee from '../Edit/EditEmployee';
+import ViewEmployee from '../View/ViewEmployee';
 
 
 export default function AllEmployee() {
@@ -58,19 +59,20 @@ export default function AllEmployee() {
 
 
     const editData=(single)=>{
+        setId(single.id);
         setEditDrawer(true);
     }
 
     const viewData=(single)=>{
+        setId(single.id);
         setViewDrawer(true);
     }
 
 
     const [data, setData] = useState([]);
-
     const [editDrawer, setEditDrawer] = useState(false);
     const [viewDrawer, setViewDrawer] = useState(false);
-
+    const [id, setId] = useState(null);
 
 
     useEffect(() => {
@@ -108,11 +110,11 @@ export default function AllEmployee() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-                <EditEmployee/>
+                <EditEmployee emp_id={id}/>
          </Drawer>
 
          <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <h1>Hiiiiiii</h1>
+            <ViewEmployee emp_id={id}/>
          </Drawer>
 
     </Grid>
