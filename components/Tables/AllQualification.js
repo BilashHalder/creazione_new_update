@@ -62,10 +62,12 @@ export default function AllQualification() {
 
 
     const editData=(single)=>{
+        setItem(single);
         setEditDrawer(true);
     }
 
     const viewData=(single)=>{
+        setItem(single);
         setViewDrawer(true);
     }
 
@@ -74,7 +76,8 @@ export default function AllQualification() {
 
     const [editDrawer, setEditDrawer] = useState(false);
     const [viewDrawer, setViewDrawer] = useState(false);
-
+    const [flag, setFlag] = useState(null);
+    const [item, setItem] = useState(null);
 
 
     useEffect(() => {
@@ -89,11 +92,7 @@ export default function AllQualification() {
             .catch((err)=> {
              console.log(err);
             });
-    }, [])
-    const tableData={
-        columns,
-        data,
-      }
+    }, [flag]);
   return (
     <Grid container sx={{'textAlign':'center!important','display':'block','my':'2%','fontFamily':'Playfair Display!important'}}>
   
@@ -112,11 +111,11 @@ export default function AllQualification() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditQualification/> 
+               <EditQualification data={item} fun={setFlag}/> 
          </Drawer>
 
          <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <ViewQualification/>
+            <ViewQualification data={item}/>
          </Drawer>
 
     </Grid>

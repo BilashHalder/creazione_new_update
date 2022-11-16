@@ -58,10 +58,12 @@ export default function AllSalary() {
 
 
     const editData=(single)=>{
+      setitem(single);
         setEditDrawer(true);
     }
 
     const viewData=(single)=>{
+        setitem(single);
         setViewDrawer(true);
     }
 
@@ -70,6 +72,8 @@ export default function AllSalary() {
 
     const [editDrawer, setEditDrawer] = useState(false);
     const [viewDrawer, setViewDrawer] = useState(false);
+    const [item, setitem] = useState(null);
+    const [flag, setFlag] = useState(null);
 
 
 
@@ -85,11 +89,12 @@ export default function AllSalary() {
             .catch((err)=> {
              console.log(err);
             });
-    }, [])
-    const tableData={
-        columns,
-        data,
-      }
+    }, [flag]);
+
+
+
+
+
   return (
     <Grid container sx={{'textAlign':'center!important','display':'block','my':'2%','fontFamily':'Playfair Display!important'}}>
   
@@ -108,11 +113,11 @@ export default function AllSalary() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditSalary/> 
+               <EditSalary data={item} fun={setFlag}/> 
          </Drawer>
 
          <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <ViewSalary/>
+            <ViewSalary data={item} />
          </Drawer>
 
     </Grid>

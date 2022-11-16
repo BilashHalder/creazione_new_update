@@ -1,5 +1,6 @@
 const baseUrl='http://localhost:9000/api';
 const imageUrl='http://localhost:9000/uploads/images';
+const docUrl='http://localhost:9000/uploads/documents';
 var stockData = [  
     {
         Symbol: "AAPL",
@@ -71,4 +72,4 @@ const downloadCSV = (args) =>{
     link.click();
 }
 
-module.exports={baseUrl,imageUrl,downloadCSV}
+module.exports={baseUrl,imageUrl,docUrl,downloadCSV}

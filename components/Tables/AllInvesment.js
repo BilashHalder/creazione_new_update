@@ -1,4 +1,4 @@
-import {React,useState,useEffect, use} from 'react'
+import {React,useState,useEffect} from 'react'
 import {Grid,ButtonGroup,Button,Avatar,Drawer} from '@mui/material';
 import axios from 'axios';
 import {baseUrl,imageUrl} from '../../util/lib';
@@ -56,10 +56,12 @@ export default function AllInvesment() {
 
 
     const editData=(single)=>{
+        setItem(single)
         setEditDrawer(true);
     }
 
     const viewData=(single)=>{
+        setItem(single)
         setViewDrawer(true);
     }
 
@@ -68,6 +70,8 @@ export default function AllInvesment() {
 
     const [editDrawer, setEditDrawer] = useState(false);
     const [viewDrawer, setViewDrawer] = useState(false);
+    const [flag, setFlag] = useState(null);
+    const [item, setItem] = useState(null);
 
 
 
@@ -106,11 +110,11 @@ export default function AllInvesment() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditInvesment/> 
+               <EditInvesment data={item} fun={setFlag}/> 
          </Drawer>
 
          <Drawer anchor={'top'}open={viewDrawer} onClose={closeEdit} >
-            <ViewInvesment/>
+            <ViewInvesment data={item}/>
          </Drawer>
 
     </Grid>

@@ -58,9 +58,8 @@ export default function AllNominee() {
 
 
     const editData=(single)=>{
-      setEditdata(single.id);
+         setItem(single);
         setEditDrawer(true);
-        setEditdata(single.id);
     }
 
    
@@ -69,7 +68,8 @@ export default function AllNominee() {
     const [data, setData] = useState([]);
 
     const [editDrawer, setEditDrawer] = useState(false);
-    const [editdata, setEditdata] = useState(null);
+    const [item, setItem] = useState(null);
+    const [flag, setFlag] = useState(false);
     
 
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function AllNominee() {
             .catch((err)=> {
              console.log(err);
             });
-    }, [])
+    }, [flag])
     const tableData={
         columns,
         data,
@@ -107,7 +107,7 @@ export default function AllNominee() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditNominee/> 
+               <EditNominee data={item} fun={setFlag}/> 
          </Drawer>
 
     

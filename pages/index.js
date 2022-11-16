@@ -20,6 +20,7 @@ import AllSalary from '../components/Tables/AllSalary';
 import AllDesignation from '../components/Tables/AllDesignation';
 import AllQualification from '../components/Tables/AllQualification';
 import AllNominee from '../components/Tables/AllNominee';
+import TabExample from '../components/TabExample';
 
 export default function MyApp() {
   return (
@@ -48,12 +49,16 @@ export default function MyApp() {
 
       {/* <AllEmployee/> */}
       {/* <AllAssociate/> */}
+
       {/* <AllCustomer/> */}
+
       {/* <AllInvesment/> */}
-     {/* <AllSalary/> */}
-     {/* <AllDesignation/> */}
-     {/* <AllQualification/> */}
-      <AllNominee/>
+
+      {/* <AllSalary/> */}
+       {/* <AllDesignation/> */}
+       {/* <AllQualification/> */}
+      {/* <AllNominee/> */}
+      <TabExample/>
 
     </div>
   );

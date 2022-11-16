@@ -47,6 +47,7 @@ export default function AllDesignation() {
 
 
     const editData=(single)=>{
+         setItem(single);
         setEditDrawer(true);
     }
 
@@ -57,6 +58,10 @@ export default function AllDesignation() {
 
     const [editDrawer, setEditDrawer] = useState(false);
     const [viewDrawer, setViewDrawer] = useState(false);
+
+    const [item, setItem] = useState(null);
+    const [flag, setFlag] = useState(false);
+
 
 
 
@@ -72,7 +77,7 @@ export default function AllDesignation() {
             .catch((err)=> {
              console.log(err);
             });
-    }, [])
+    }, [flag])
     const tableData={
         columns,
         data,
@@ -95,7 +100,7 @@ export default function AllDesignation() {
         />
 
         <Drawer anchor={'top'}open={editDrawer} onClose={closeView} >
-               <EditDesignation/> 
+               <EditDesignation data={item} fun={setFlag}/> 
          </Drawer>
 
     </Grid>
