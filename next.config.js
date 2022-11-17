@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const path = require('path')
 
 module.exports = {
@@ -14,5 +15,13 @@ module.exports = {
     }
 
     return config
+=======
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['pexels.com','localhost','images.pexels.com'],
+>>>>>>> 1f621d7cf56879dadb1d593beb85e5490128a1c4
   }
 }

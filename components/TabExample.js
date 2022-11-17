@@ -1,11 +1,8 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import AllSalary from './Tables/AllSalary';
-import EmployeeInfoNew from './Add/EmployeeInfoNew';
 import EmployeeNew from './Add/EmployeeNew';
 
 function TabPanel(props) {
@@ -50,7 +47,7 @@ export default function BasicTabs() {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <AllSalary></AllSalary>
+       
       </TabPanel>
 
       <TabPanel value={value} index={1}>
