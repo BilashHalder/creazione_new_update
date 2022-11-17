@@ -8,9 +8,9 @@ export default function AssoicateNew() {
 
   //Common States For All
   const [message, setMessage] = useState('This is a success alert — check it out!');
-  const [alertShow, setAlertShow] = useState(true);
+  const [alertShow, setAlertShow] = useState(false);
   const [alertColor, setaAertColor] = useState('error');
-const [employees, setEmployees] = useState([]);
+   const [employees, setEmployees] = useState([]);
 useEffect(() => {
   axios({
     method: "get",
@@ -18,9 +18,9 @@ useEffect(() => {
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then((response)=> {
-      setAlertShow(true);
-      setMessage("Cutomer Information Saved");
-      setaAertColor('success');
+      // setAlertShow(true);
+      // setMessage("Cutomer Information Saved");
+      // setaAertColor('success');
       resetForm();
     })
     .catch((response)=> {
